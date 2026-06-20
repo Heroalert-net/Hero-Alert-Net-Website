@@ -1,22 +1,8 @@
-import * as React from "react";
-
-const MOBILE_BREAKPOINT = 768;
-
-export function useIsMobile() {
-  const [isMobile, setIsMobile] = React.useState<boolean | undefined>(
-    undefined,
+export default function Home() {
+  return (
+    <main style={{ minHeight: "100vh", background: "#050505", color: "#fff", padding: "80px" }}>
+      <h1>Hero Alert</h1>
+      <p>Real-time emergency intelligence.</p>
+    </main>
   );
-
-  React.useEffect(() => {
-    const mql = window.matchMedia(`(max-width: ${MOBILE_BREAKPOINT - 1}px)`);
-    const onChange = () => {
-      setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    };
-    mql.addEventListener("change", onChange);
-    setIsMobile(window.innerWidth < MOBILE_BREAKPOINT);
-    return () => mql.removeEventListener("change", onChange);
-  }, []);
-
-  return !!isMobile;
 }
-export default Home;
