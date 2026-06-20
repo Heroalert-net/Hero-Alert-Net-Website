@@ -4,7 +4,7 @@ import Home from "./components/pages/Home";
 import logoSrc from "@/imports/HA_Logo_With_Words__1_.jpg";
 import howItWorksBg from "@/imports/ChatGPT Image Jun 19, 2026, 07_59_37 PM.png;
 import dispatchCenterImg from "@/imports/ChatGPT Image Jun 19, 2026, 08_27_19 PM.png;
-import aboutBg from "@/imports/ChatGPT_Image_Jun_19__2026__08_35_49_PM.png";
+import aboutBg from "@/imports/ChatGPT Image Jun 19, 2026, 08_35_49 PM.png;
 
 // ─────────────────────────────────────────────
 // HOW IT WORKS
