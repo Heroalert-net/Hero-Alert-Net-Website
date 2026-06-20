@@ -381,7 +381,7 @@ export default function Home() {
 
               {/* Screen content — the uploaded image fills remaining space */}
               <div style={{ flex: 1, position: "relative", overflow: "hidden", margin: "0 2px" }}>
-                <ImageWithFallback
+                <img
                   src={phoneMockupSrc}
                   alt="Hero Alert mobile app — live video call connected to 911 dispatcher"
                   className="w-full h-full object-cover"
