@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
 import logoSrc from "@/imports/HA_Logo_With_Words__1_.jpg";
-import phoneMockupSrc from "@/imports/ChatGPT_Image_Jun_19__2026__07_34_33_PM.png";
+import phoneMockupSrc from "@/imports/ChatGPT Image Jun 19, 2026, 07_34_33 PM.png";
 
 const NAV_LINKS = [
   { label: "SOLUTIONS", href: "#solutions" },
