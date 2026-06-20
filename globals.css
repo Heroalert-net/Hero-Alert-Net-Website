@@ -1,0 +1,434 @@
+import { useState } from "react";
+import { ImageWithFallback } from "@/app/components/figma/ImageWithFallback";
+import logoSrc from "@/imports/HA_Logo_With_Words__1_.jpg";
+
+const MARKETS = [
+  { label: "911 Dispatch", icon: "📡" },
+  { label: "Public Schools", icon: "🏫" },
+  { label: "Universities", icon: "🎓" },
+  { label: "Mental Health", icon: "🧠" },
+  { label: "Municipalities", icon: "🏛️" },
+  { label: "Healthcare", icon: "🏥" },
+  { label: "Corporate Security", icon: "🔒" },
+];
+
+const LEADERSHIP = [
+  {
+    name: "Marcus J. Reed",
+    title: "Chief Executive Officer",
+    background: "Former 911 Center Director, Fulton County",
+    photo: "https://images.unsplash.com/photo-1781271780548-49339c20eb60?w=480&h=560&fit=crop&auto=format",
+  },
+  {
+    name: "Dr. Priya Shankar",
+    title: "Chief Technology Officer",
+    background: "Ex-DARPA, AI & Emergency Systems",
+    photo: "https://images.unsplash.com/photo-1770058443069-e384cd001e9b?w=480&h=560&fit=crop&auto=format",
+  },
+  {
+    name: "David Okafor",
+    title: "Chief Operating Officer",
+    background: "20 years in public safety technology",
+    photo: "https://images.unsplash.com/photo-1758600432264-b8d2a0fd7d83?w=480&h=560&fit=crop&auto=format",
+  },
+  {
+    name: "Sara Ellison",
+    title: "VP of Partnerships",
+    background: "Former FEMA Regional Coordinator",
+    photo: "https://images.unsplash.com/photo-1758600587839-56ba05596c69?w=480&h=560&fit=crop&auto=format",
+  },
+];
+
+const MILESTONES = [
+  { year: "2020", label: "Founded in Atlanta, GA" },
+  { year: "2021", label: "Pilot with 3 911 centers" },
+  { year: "2022", label: "HAESC national rollout begins" },
+  { year: "2023", label: "K-12 and university platform launched" },
+  { year: "2024", label: "AI Decision Engine v2 deployed" },
+  { year: "2025", label: "50+ agencies nationwide" },
+];
+
+export default function About() {
+  const [hoveredMember, setHoveredMember] = useState<number | null>(null);
+
+  return (
+    <div
+      className="min-h-screen bg-background text-foreground"
+      style={{ fontFamily: "'Inter', sans-serif" }}
+    >
+      {/* ── Navigation ── */}
+      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/90 backdrop-blur-md">
+        <div className="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+          <div className="flex items-center gap-3">
+            <ImageWithFallback
+              src={logoSrc}
+              alt="Hero Alert logo"
+              className="h-10 w-auto object-contain"
+            />
+          </div>
+          <div className="hidden md:flex items-center gap-8 text-sm font-medium text-muted-foreground">
+            <a href="#" className="hover:text-white transition-colors">HOME</a>
+            <a href="#" className="hover:text-white transition-colors">SOLUTIONS</a>
+            <a href="#" className="hover:text-white transition-colors">PRODUCT</a>
+            <a href="#" className="text-white">COMPANY</a>
+            <a href="#" className="hover:text-white transition-colors">CONTACT</a>
+          </div>
+          <button
+            className="hidden md:block px-5 py-2 text-sm font-bold tracking-wider uppercase bg-primary text-primary-foreground hover:bg-primary/90 transition-colors"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            Book Demo
+          </button>
+        </div>
+      </nav>
+
+      {/* ── Hero ── */}
+      <section className="pt-32 pb-24 px-6 relative overflow-hidden">
+        {/* Background gradient glow */}
+        <div className="absolute inset-0 pointer-events-none">
+          <div
+            className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[400px] opacity-20 blur-3xl"
+            style={{ background: "radial-gradient(ellipse, #B30000 0%, transparent 70%)" }}
+          />
+        </div>
+
+        <div className="max-w-7xl mx-auto relative">
+          <div className="flex flex-col items-center text-center mb-16">
+            <span
+              className="text-xs font-bold tracking-[0.3em] uppercase text-secondary mb-6"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              About Hero Alert
+            </span>
+            <h1
+              className="text-5xl md:text-7xl font-black uppercase leading-none tracking-tight mb-6"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                background: "linear-gradient(135deg, #ffffff 40%, #D4AF37 100%)",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+                backgroundClip: "text",
+              }}
+            >
+              Built for the<br />Moments That Matter
+            </h1>
+            <p className="text-lg text-muted-foreground max-w-2xl leading-relaxed">
+              Hero Alert is an emergency response technology company dedicated to
+              saving lives through real-time communication, AI-powered triage,
+              and unified situational awareness.
+            </p>
+          </div>
+
+          {/* Stats bar */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-px bg-border">
+            {[
+              { value: "50+", label: "Partner Agencies" },
+              { value: "1M+", label: "Emergencies Processed" },
+              { value: "40%", label: "Faster Response Times" },
+              { value: "24/7", label: "National Coverage" },
+            ].map((stat) => (
+              <div key={stat.label} className="bg-card px-8 py-8 text-center">
+                <p
+                  className="text-4xl font-bold mb-1"
+                  style={{
+                    fontFamily: "'Space Grotesk', sans-serif",
+                    background: "linear-gradient(90deg, #B30000, #D4AF37)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                  }}
+                >
+                  {stat.value}
+                </p>
+                <p className="text-xs font-medium tracking-wider uppercase text-muted-foreground">
+                  {stat.label}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Mission & Vision ── */}
+      <section className="py-24 px-6 border-t border-border">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-px bg-border">
+          {/* Mission */}
+          <div className="bg-background p-12 md:p-16 relative overflow-hidden">
+            <div
+              className="absolute top-0 left-0 w-1 h-full"
+              style={{ background: "linear-gradient(180deg, #B30000, transparent)" }}
+            />
+            <p
+              className="text-xs font-bold tracking-[0.3em] uppercase text-primary mb-6"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              Our Mission
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-black uppercase leading-tight mb-8"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              Improve Emergency Outcomes
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              To improve emergency outcomes by connecting people, technology, and
+              first responders in real time — so that every second counts and
+              no call goes unanswered.
+            </p>
+          </div>
+
+          {/* Vision */}
+          <div className="bg-card p-12 md:p-16 relative overflow-hidden">
+            <div
+              className="absolute top-0 left-0 w-1 h-full"
+              style={{ background: "linear-gradient(180deg, #D4AF37, transparent)" }}
+            />
+            <p
+              className="text-xs font-bold tracking-[0.3em] uppercase text-secondary mb-6"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              Our Vision
+            </p>
+            <h2
+              className="text-3xl md:text-4xl font-black uppercase leading-tight mb-8"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              The Operating System for Emergency Communications
+            </h2>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Become the unified infrastructure layer that every 911 center,
+              school, university, and crisis facility relies on — from first
+              contact to incident resolution.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Markets Served ── */}
+      <section className="py-24 px-6 border-t border-border bg-card">
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-end justify-between mb-14 gap-6">
+            <div>
+              <span
+                className="text-xs font-bold tracking-[0.3em] uppercase text-secondary mb-4 block"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                Markets Served
+              </span>
+              <h2
+                className="text-4xl md:text-5xl font-black uppercase leading-tight"
+                style={{ fontFamily: "'Montserrat', sans-serif" }}
+              >
+                Built For Every<br />Emergency Environment
+              </h2>
+            </div>
+            <p className="text-muted-foreground max-w-sm leading-relaxed">
+              Hero Alert deploys across the full spectrum of public safety
+              and institutional emergency response.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-7 gap-3">
+            {MARKETS.map((m) => (
+              <div
+                key={m.label}
+                className="group border border-border bg-background hover:border-primary transition-all duration-300 p-5 flex flex-col items-center text-center gap-3 cursor-default"
+              >
+                <span className="text-3xl">{m.icon}</span>
+                <span
+                  className="text-xs font-bold uppercase tracking-wide group-hover:text-primary transition-colors"
+                  style={{ fontFamily: "'Montserrat', sans-serif" }}
+                >
+                  {m.label}
+                </span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── Timeline ── */}
+      <section className="py-24 px-6 border-t border-border">
+        <div className="max-w-7xl mx-auto">
+          <span
+            className="text-xs font-bold tracking-[0.3em] uppercase text-secondary mb-4 block"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            Our Story
+          </span>
+          <h2
+            className="text-4xl md:text-5xl font-black uppercase leading-tight mb-16"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            From Concept to National Platform
+          </h2>
+
+          <div className="relative">
+            {/* Track line */}
+            <div
+              className="absolute top-5 left-0 right-0 h-px hidden md:block"
+              style={{ background: "linear-gradient(90deg, #B30000, #D4AF37)" }}
+            />
+            <div className="grid grid-cols-2 md:grid-cols-6 gap-8">
+              {MILESTONES.map((m, i) => (
+                <div key={m.year} className="relative flex flex-col gap-4">
+                  {/* Dot */}
+                  <div className="hidden md:flex items-center justify-start">
+                    <div
+                      className="w-3 h-3 rounded-full border-2 border-primary bg-background relative z-10"
+                      style={i % 2 === 0 ? { borderColor: "#B30000" } : { borderColor: "#D4AF37" }}
+                    />
+                  </div>
+                  <div>
+                    <p
+                      className="text-2xl font-bold mb-1"
+                      style={{
+                        fontFamily: "'Space Grotesk', sans-serif",
+                        color: i % 2 === 0 ? "#B30000" : "#D4AF37",
+                      }}
+                    >
+                      {m.year}
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-snug">{m.label}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Leadership ── */}
+      <section className="py-24 px-6 border-t border-border bg-card">
+        <div className="max-w-7xl mx-auto">
+          <span
+            className="text-xs font-bold tracking-[0.3em] uppercase text-secondary mb-4 block"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            Leadership
+          </span>
+          <h2
+            className="text-4xl md:text-5xl font-black uppercase leading-tight mb-16"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            Operators &amp; Technologists<br />Who&apos;ve Lived the Problem
+          </h2>
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {LEADERSHIP.map((person, i) => (
+              <div
+                key={person.name}
+                className="group relative border border-border overflow-hidden cursor-default"
+                onMouseEnter={() => setHoveredMember(i)}
+                onMouseLeave={() => setHoveredMember(null)}
+              >
+                <div className="relative bg-muted">
+                  <ImageWithFallback
+                    src={person.photo}
+                    alt={`Portrait of ${person.name}`}
+                    className="w-full aspect-[3/4] object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                  />
+                  {/* Red overlay on hover */}
+                  <div
+                    className="absolute inset-0 transition-opacity duration-300"
+                    style={{
+                      background: "linear-gradient(to top, rgba(179,0,0,0.85) 0%, transparent 60%)",
+                      opacity: hoveredMember === i ? 1 : 0,
+                    }}
+                  />
+                  {/* Always-on bottom gradient for text legibility */}
+                  <div
+                    className="absolute inset-0"
+                    style={{
+                      background: "linear-gradient(to top, rgba(5,5,5,0.9) 0%, transparent 50%)",
+                    }}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 p-5">
+                    <p
+                      className="text-base font-black uppercase leading-tight mb-0.5"
+                      style={{ fontFamily: "'Montserrat', sans-serif" }}
+                    >
+                      {person.name}
+                    </p>
+                    <p className="text-xs text-secondary font-medium tracking-wide">{person.title}</p>
+                    <p
+                      className="text-xs text-muted-foreground mt-2 transition-all duration-300"
+                      style={{ opacity: hoveredMember === i ? 1 : 0 }}
+                    >
+                      {person.background}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA ── */}
+      <section className="py-24 px-6 border-t border-border relative overflow-hidden">
+        <div
+          className="absolute inset-0 pointer-events-none opacity-10"
+          style={{ background: "radial-gradient(ellipse at center, #B30000 0%, transparent 70%)" }}
+        />
+        <div className="max-w-4xl mx-auto text-center relative">
+          <div className="flex justify-center mb-8">
+            <ImageWithFallback
+              src={logoSrc}
+              alt="Hero Alert"
+              className="h-20 w-auto object-contain"
+            />
+          </div>
+          <h2
+            className="text-4xl md:text-6xl font-black uppercase leading-tight mb-6"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            Ready to Modernize<br />Emergency Response?
+          </h2>
+          <p className="text-muted-foreground text-lg mb-12 max-w-xl mx-auto">
+            Join the agencies across the country using Hero Alert to save lives
+            every day.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <button
+              className="px-8 py-4 font-black uppercase tracking-wider text-sm transition-all duration-200 hover:opacity-90"
+              style={{
+                fontFamily: "'Montserrat', sans-serif",
+                background: "linear-gradient(135deg, #B30000, #8B0000)",
+                color: "#fff",
+              }}
+            >
+              Schedule Demo
+            </button>
+            <button
+              className="px-8 py-4 font-black uppercase tracking-wider text-sm border border-secondary text-secondary hover:bg-secondary hover:text-background transition-all duration-200"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              Request Pilot Program
+            </button>
+            <button
+              className="px-8 py-4 font-black uppercase tracking-wider text-sm border border-border text-muted-foreground hover:text-white hover:border-white transition-all duration-200"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              Contact Sales
+            </button>
+          </div>
+        </div>
+      </section>
+
+      {/* ── Footer ── */}
+      <footer className="border-t border-border bg-card">
+        <div className="max-w-7xl mx-auto px-6 py-8 flex flex-col md:flex-row items-center justify-between gap-4">
+          <ImageWithFallback
+            src={logoSrc}
+            alt="Hero Alert"
+            className="h-8 w-auto object-contain"
+          />
+          <p className="text-xs text-muted-foreground">
+            © 2026 Hero Alert. All rights reserved. Protecting communities nationwide.
+          </p>
+        </div>
+      </footer>
+    </div>
+  );
+}
